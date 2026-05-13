@@ -4,6 +4,7 @@ pipeline {
     environment {
         AWS_DEFAULT_REGION = 'us-east-1'
         S3_BUCKET = 'clahantech2026'
+        CLOUDFRONT_DISTRIBUTION_ID = 'E60GJW85YNVGL'
     }
 
     stages {
@@ -11,7 +12,7 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 git branch: 'main',
-                url: 'https://github.com/vsivakumar668/Food_App'
+                url: 'https://github.com/vsivakumar668/Food_App.git'
             }
         }
 
@@ -28,23 +29,25 @@ pipeline {
 
                     sh '''
                     aws s3 sync . s3://$S3_BUCKET --delete \
-                      --exclude ".git/*" \
-                      --exclude "Jenkinsfile"
+                    --exclude ".git/*" \
+                    --exclude "Jenkinsfile"
                     '''
-
                 }
             }
         }
-    }
 
-    post {
+        stage('Invalidate CloudFront Cache') {
+            steps {
 
-        success {
-            echo 'Website deployed successfully to S3'
-        }
+                withAWS(credentials: 'aws-credentials', region: 'us-east-1') {
 
-        failure {
-            echo 'Pipeline failed'
+                    sh '''
+                    aws cloudfront create-invalidation \
+                    --distribution-id $CLOUDFRONT_DISTRIBUTION_ID \
+                    --paths "/*"
+                    '''
+                }
+            }
         }
     }
 }
