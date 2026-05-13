@@ -8,32 +8,39 @@ pipeline {
 
     stages {
 
-        stage('Clone GitHub Repo') {
+        stage('Checkout Code') {
             steps {
-                git 'https://github.com/vsivakumar668/Food_App.git'
+                git branch: 'main',
+                url: 'https://github.com/vsivakumar668/Food_App.git'
             }
         }
 
-        stage('List Files') {
+        stage('Verify Files') {
             steps {
                 sh 'ls -la'
             }
         }
 
-        stage('Upload Website to S3') {
+        stage('Deploy to S3') {
             steps {
-                sh '''
-                aws s3 sync . s3://$S3_BUCKET --delete \
-                  --exclude ".git/*" \
-                  --exclude "Jenkinsfile"
-                '''
+
+                withAWS(credentials: 'aws-credentials', region: 'us-east-1') {
+
+                    sh '''
+                    aws s3 sync . s3://$S3_BUCKET --delete \
+                      --exclude ".git/*" \
+                      --exclude "Jenkinsfile"
+                    '''
+
+                }
             }
         }
     }
 
     post {
+
         success {
-            echo 'Website uploaded successfully to S3'
+            echo 'Website deployed successfully to S3'
         }
 
         failure {
@@ -41,8 +48,3 @@ pipeline {
         }
     }
 }
-     
-
-
-
-      
