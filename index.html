@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FoodExpress - Premium Food Delivery</title>
+ 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+ 
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+ 
+body{
+    background:linear-gradient(to right,#f8fafc,#eef2ff);
+    color:#222;
+}
+ 
+/* HEADER */
+header{
+    background:linear-gradient(135deg,#7c3aed,#2563eb);
+    color:white;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+ 
+header h1{
+    font-size:42px;
+    margin-bottom:10px;
+}
+ 
+header p{
+    font-size:18px;
+    opacity:0.9;
+}
+ 
+/* NAVBAR */
+nav{
+    background:#111827;
+    padding:15px;
+    text-align:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+ 
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 20px;
+    font-size:18px;
+    transition:0.3s;
+}
+ 
+nav a:hover{
+    color:#38bdf8;
+}
+ 
+/* HERO SECTION */
+.hero{
+    background:
+    linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.6)),
+    url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1600&auto=format&fit=crop') center/cover;
+    height:500px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+ 
+.hero h2{
+    font-size:58px;
+    margin-bottom:20px;
+}
+ 
+.hero p{
+    font-size:22px;
+    margin-bottom:25px;
+}
+ 
+.hero-btn{
+    background:#06b6d4;
+    color:white;
+    padding:14px 28px;
+    border-radius:30px;
+    text-decoration:none;
+    font-size:18px;
+    transition:0.3s;
+}
+ 
+.hero-btn:hover{
+    background:#0891b2;
+    transform:scale(1.05);
+}
+ 
+/* CONTAINER */
+.container{
+    width:90%;
+    margin:auto;
+    padding:60px 0;
+}
+ 
+.section-title{
+    text-align:center;
+    margin-bottom:40px;
+    color:#111827;
+    font-size:38px;
+}
+ 
+/* FEATURES */
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+    margin-bottom:60px;
+}
+ 
+.feature-box{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+ 
+.feature-box:hover{
+    transform:translateY(-8px);
+}
+ 
+.feature-box h3{
+    margin:15px 0;
+    color:#2563eb;
+}
+ 
+/* FOOD GRID */
+.food-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+}
+ 
+.food-card{
+    background:white;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 6px 18px rgba(0,0,0,0.12);
+    transition:0.3s;
+}
+ 
+.food-card:hover{
+    transform:translateY(-10px);
+}
+ 
+.food-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+ 
+.food-content{
+    padding:22px;
+}
+ 
+.food-content h3{
+    margin-bottom:10px;
+    color:#111827;
+}
+ 
+.food-content p{
+    color:#6b7280;
+    margin-bottom:15px;
+    line-height:1.5;
+}
+ 
+.price{
+    color:#7c3aed;
+    font-size:24px;
+    font-weight:700;
+    margin-bottom:15px;
+}
+ 
+.rating{
+    color:#f59e0b;
+    margin-bottom:15px;
+    font-size:18px;
+}
+ 
+.btn{
+    display:inline-block;
+    background:linear-gradient(135deg,#7c3aed,#2563eb);
+    color:white;
+    padding:12px 22px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    text-decoration:none;
+    transition:0.3s;
+}
+ 
+.btn:hover{
+    transform:scale(1.05);
+    opacity:0.9;
+}
+ 
+/* OFFER SECTION */
+.offer{
+    background:linear-gradient(135deg,#06b6d4,#2563eb);
+    color:white;
+    padding:50px;
+    border-radius:20px;
+    text-align:center;
+    margin-top:70px;
+}
+ 
+.offer h2{
+    font-size:40px;
+    margin-bottom:15px;
+}
+ 
+.offer p{
+    font-size:20px;
+    margin-bottom:20px;
+}
+ 
+/* FOOTER */
+footer{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:25px;
+    margin-top:60px;
+}
+ 
+/* RESPONSIVE */
+@media(max-width:768px){
+    .hero h2{
+        font-size:40px;
+    }
+ 
+    .hero p{
+        font-size:18px;
+    }
+}
+</style>
+</head>
+ 
+<body>
+ 
+<header>
+<h1>🍔 FoodExpress</h1>
+<p>Premium Food Delivery Experience</p>
+</header>
+ 
+<nav>
+<a href="#">Home</a>
+<a href="#">Menu</a>
+<a href="#">Offers</a>
+<a href="#">Track Order</a>
+<a href="#">Contact</a>
+</nav>
+ 
+<section class="hero">
+<h2>Fast Delivery, Fresh Food</h2>
+<p>Order from top restaurants near you</p>
+<a href="#" class="hero-btn">Explore Menu</a>
+</section>
+ 
+<div class="container">
+ 
+    <!-- FEATURES -->
+<h2 class="section-title">Why Choose Us</h2>
+ 
+    <div class="features">
+ 
+        <div class="feature-box">
+<h2>⚡</h2>
+<h3>30 Min Delivery</h3>
+<p>Lightning-fast delivery to your doorstep.</p>
+</div>
+ 
+        <div class="feature-box">
+<h2>🎁</h2>
+<h3>Daily Offers</h3>
+<p>Get exciting discounts and cashback daily.</p>
+</div>
+ 
+        <div class="feature-box">
+<h2>📍</h2>
+<h3>Live Tracking</h3>
+<p>Track your order in real time.</p>
+</div>
+ 
+        <div class="feature-box">
+<h2>⭐</h2>
+<h3>Top Rated</h3>
+<p>Thousands of happy food lovers.</p>
+</div>
+ 
+    </div>
+ 
+    <!-- FOOD ITEMS -->
+<h2 class="section-title">Trending Dishes</h2>
+ 
+    <div class="food-grid">
+ 
+        <div class="food-card">
+<img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1200&auto=format&fit=crop" alt="Burger">
+ 
+            <div class="food-content">
+<h3>Cheese Burger</h3>
+<p>Loaded with juicy patty, cheese and fresh veggies.</p>
+<div class="rating">⭐⭐⭐⭐☆</div>
+<div class="price">₹199</div>
+<a href="#" class="btn">Order Now</a>
+</div>
+</div>
+ 
+        <div class="food-card">
+<img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=1200&auto=format&fit=crop" alt="Pizza">
+ 
+            <div class="food-content">
+<h3>Italian Pizza</h3>
+<p>Cheesy pizza topped with olives and fresh herbs.</p>
+<div class="rating">⭐⭐⭐⭐⭐</div>
+<div class="price">₹299</div>
+<a href="#" class="btn">Order Now</a>
+</div>
+</div>
+ 
+        <div class="food-card">
+<img src="https://images.unsplash.com/photo-1604908176997-4317c288032e?q=80&w=1200&auto=format&fit=crop" alt="Biryani">
+ 
+            <div class="food-content">
+<h3>Chicken Biryani</h3>
+<p>Authentic dum biryani with rich Indian spices.</p>
+<div class="rating">⭐⭐⭐⭐⭐</div>
+<div class="price">₹249</div>
+<a href="#" class="btn">Order Now</a>
+</div>
+</div>
+ 
+        <div class="food-card">
+<img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1200&auto=format&fit=crop" alt="Pasta">
+ 
+            <div class="food-content">
+<h3>Creamy Pasta</h3>
+<p>Italian white sauce pasta with garlic bread.</p>
+<div class="rating">⭐⭐⭐⭐☆</div>
+<div class="price">₹229</div>
+<a href="#" class="btn">Order Now</a>
+</div>
+</div>
+ 
+        <div class="food-card">
+<img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1200&auto=format&fit=crop" alt="Salad">
+ 
+            <div class="food-content">
+<h3>Healthy Salad</h3>
+<p>Fresh organic vegetables with special dressing.</p>
+<div class="rating">⭐⭐⭐⭐⭐</div>
+<div class="price">₹179</div>
+<a href="#" class="btn">Order Now</a>
+</div>
+</div>
+ 
+        <div class="food-card">
+<img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=1200&auto=format&fit=crop" alt="Dessert">
+ 
+            <div class="food-content">
+<h3>Chocolate Dessert</h3>
+<p>Rich chocolate lava cake with ice cream.</p>
+<div class="rating">⭐⭐⭐⭐⭐</div>
+<div class="price">₹149</div>
+<a href="#" class="btn">Order Now</a>
+</div>
+</div>
+ 
+    </div>
+ 
+    <!-- OFFER -->
+<div class="offer">
+<h2>🔥 Special Weekend Offer</h2>
+<p>Get Flat 40% OFF on orders above ₹599</p>
+<a href="#" class="hero-btn">Claim Offer</a>
+</div>
+ 
+</div>
+ 
+<footer>
+<p>© 2026 FoodExpress | AWS S3 Static Website Hosting & Jenkins CI/CD Demo</p>
+</footer>
+ 
+</body>
+</html>
