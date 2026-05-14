@@ -1,0 +1,180 @@
+Important AWS services:
+-----------------------
+Service:                    Purpose:
+-------------------------------------
+EC2                        Virtual server
+S3                         Storage
+IAM                        Access management
+VPC                        Virtual network
+Cloud watch                Monitoring
+Cloudformation             IaC infrastructure as code
+
+
+Real-Time Example:
+------------------
+Netflix Architecture
+1.EC2 ----> Application hosting
+2.S3 -----> Videos storage
+3.Cloudfront ---> CDN Content delivery network
+4.Autoscaling ----> Handles millions of users
+
+What is IAM?
+------------
+-Identity access and management
+-Its a service that lets you control who can access your AWS resources and what they can do.
+
+what is authentication and authorizaton:
+----------------------------------------
+1.Authentication: Who are you? (users, roles, accounts)
+2.Authorization: what are you allowed to do? (permissions, policies)
+
+Key components:
+----------------
+1.Users: individual accounts (like a person or app)
+2.Groups: collection of users with shared permission
+3.Roles: temporary access (often used by services or apps)
+4.Policies: rules that define permissions (written in JSON)
+
+Example:
+you can allow a user to :
+1.read files from s3
+2.but not delete them
+
+Permission options:
+1.copy permission from existing user
+2.add your to group
+3.direct attach polocies
+
+
+What is VPC?
+===========
+VPC (Virtual private cloud) is private network inside the aws, where you launch and manage cloud resources sercurely
+
+Think of it like:
+" A Private data center network inside AWS "
+
+Inside VPC, you can launch:
+-EC2 servers
+-Databases
+-Containers
+-Load balancers
+
+You control:
+-IP address ranges
+-Subnets
+-Routing
+-Internet access (Internet gateway and NAT gateway)
+-Security rules (firewalls in EC2 -SG)
+
+Simple Real-Time Example:
+-------------------------
+Example: Imagine building a company office
+
+Real World :                  AWS VPC:
+--------------------------------------
+Office building               VPC (Main)
+Rooms/Floors                  Subnets
+Security guards               Security groups
+Roads                         Route tables
+Main Entrance                 Internet gateway
+Employees                     EC2 instances
+
+components:
+-----------
+1.VPC
+The main isolated network
+VPC CIDR(classless inter domain): 10.0.0.0/16 (IPV4 -- Internet protocol version 4)
+
+Note:
+This is mean total IP ranges available inside the VPC
+can create many subnets
+
+2. subents
+Two types subnets:
+  a.Public subnet
+  b.Private subnet
+
+
+a. Public subnet
+-Has internet access
+-used for web servers, load balancers etc
+
+Example: subnet CIDR: 10.0.1.0/24
+
+b.Private subnet
+-No direct internet access
+-Used for datbase, internal applications
+
+Example: subnet CIDR: 10.0.2.0/24
+
+3.Internet gateway:
+------------------
+Allows communication betwen VPC ---> Internet
+
+Without IGW (there is no internet access to public)
+IGW allows internet access to public
+IGW is attached to VPC
+
+Flow: Public EC2 ----> Internet gateway ---> Internet
+
+4.Route table (Controls traffic flow)
+--------------------------------------
+Example:                    Target:
+-------------------------------------
+0.0.0.0/0                  Internet gateway
+
+Meaning: send all internet traffic to IGW
+
+Types:
+a.public route table
+b.private route table
+
+
+5.Security group rules:
+------------------------
+Examples:
+Inbound rules and outbound rules:
+
+Inbound rules:
+Port 22 -----> SSH
+Port 80 -----> HTTP
+Port 443 ----> HTTPS
+
+Outbound rules:
+ALL Traffic
+
+6.NAT Gateway:
+--------------
+Used when:
+Private subnet servers need internet
+But internet should access them directly
+
+Example: Datbase server downloading patches
+
+Flow: Private EC2 ------> NAT Gateway -----> Internet
+
+7. Create EC2 instances
+public Ec2
+private Ec2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
