@@ -1,0 +1,217 @@
+1.What is Web Sever?
+==================
+A webserver handles:
+-Static content
+-Client request
+-HTTP/HTTPS traffic
+-Front delivery
+
+Deliver web pages
+It acts as the entry point for users.
+
+Responsibilities:
+------------------
+-Serve HTML/CSS/JS/Images
+-Reverse proxy request
+-SSL termination
+-Load balancing
+-Caching
+
+Real-Time Flow:
+---------------
+user request /open : https://amazon.com
+
+Request first reaches to web servers:
+Examples/name: 
+1. NGINX : most popular modern web server
+2. Apache : Traditional open source web server
+
+Example:
+--------
+NGINX as Web Server
+
+Internet User --> Nginx Web server --> Frontend files
+
+what web server mainly Handles:
+-------------------------------
+
+Type:              Example:
+----------------------------
+Static Files       HTML
+Images             PNG/JPG
+CSS                Styling
+Javascript         UI logic
+SSL                HTTPS encryption
+
+
+2.What is APP Server?
+======================
+An Application server handles:
+-Business logic
+-APIs (Application programming interface)
+-Authentication
+-Data processing
+-Backend execution
+
+Responsibilities:
+-----------------
+-Process API request
+-Execute code
+-Connect to database
+-Handles business rules
+
+
+Real-Time Example:
+------------------
+when user clicks:
+
+"Place order"
+
+Application server:
+-Validates payment
+-checks stock
+-creates order
+-sends confirmation
+
+Popular App servers Example:
+----------------------------
+App server:          Used For:
+-------------------------------
+Apache tomcat        Java applications
+JBoss EAP            Enterprise java apps
+Node.js              Javascript backend
+
+Example flow:
+-------------
+web server(nginx) ----> App server(tomcat/API)
+
+Common backend technologies:
+language:              Framework:
+---------------------------------
+Java                   Springboot
+Python                 Flask/Django
+Node.js                ExpressJS
+.NET                   ASP.NET
+Go                     Fiber
+
+
+3.What is DB Server?
+--------------------
+A datbase server stores and manages data
+It handles:
+-data storage
+-queries
+-transaction
+-backups
+
+Responsibilities:
+----------------
+-store application data
+-Run SQL queries
+-Maintain consistency
+-Handle transactions
+
+Real-Time Example:
+------------------
+Amazon database stores:
+-customer info
+-orders
+-payments
+-product catalog
+
+Popular database servers:
+Datbase:              Type:
+----------------------------
+MySQL                 Relational DB
+PostgreSQL            Advanced SQL DB
+Oracle database       Enterprise DB
+Mongo DB              document DB
+
+datbase flow:
+------------
+APP server ----> MySQL/RDS DB server
+
+
+Three Tier arhitecture:
+----------------------
+user Browser ---> WEB SERVER(NGINX/APACHE) ---> APP SERVER(Tomcat/NodeJS) ---> DATABASE Server(MySQL/Postgres)
+
+Real-Time Example -- Banking Application:
+==========================================
+1.WEB SERVER
+Handles:
+-Login page
+-HTTPS traffic
+-Static content
+
+Example: NGINX
+
+2.APP SERVER
+handles:
+-Balance check
+-transactions
+-authentication
+
+Example: Spring Boot + tomcat
+
+3.DB SERVER
+Stores:
+-account details
+-transactions
+-customer records
+
+Example:
+oracle DB
+
+
+AWS Mapping:
+-----------
+Layer:          AWS Service:
+----------------------------
+Web server      EC2 + NGINX
+APP server      ECS/EKS/EC2
+DB server       RDS/Aurora
+
+Modern Cloud Architecture:
+-------------------------
+Nowadys:
+-NGINX acts as reverse proxy
+-Microservices run in kubernetes
+-Database are managed services
+
+Example:
+-------
+Cloud Front--->ALB load balancer ---> Kubernetes ---> microservices ----> RDS database
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
